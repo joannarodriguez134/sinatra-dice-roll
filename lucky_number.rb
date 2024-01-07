@@ -47,19 +47,30 @@ get("/giraffe") do
 end
 
 
+# get("/dice/2/6") do
+
+#   first_die = rand(1..6)
+#   second_die = rand(1..6)
+#   sum = first_die + second_die
+	
+#   @outcome = "You rolled a #{first_die} and a #{second_die} for a total of #{sum}."
+
+#   # w the @ it becomes a instance variable rather than a local variable
+	
+#   erb(:two_six)
+# end
+
 get("/dice/2/6") do
+  @rolls = []
 
-  first_die = rand(1..6)
-  second_die = rand(1..6)
-  sum = first_die + second_die
-	
-  @outcome = "You rolled a #{first_die} and a #{second_die} for a total of #{sum}."
+  2.times do
+    die = rand(1..6)
 
-  # w the @ it becomes a instance variable rather than a local variable
-	
-  erb(:two_six, { :layout => :wrapper })
+    @rolls.push(die)
+  end
+
+  erb(:two_six)
 end
-
 # To do: GET /dice/2/10 (simulate two 10-sided dice)
 
 get ("/dice/2/10") do
@@ -69,19 +80,17 @@ get ("/dice/2/10") do
 
   @outcome = "You rolled a #{first_die} and a #{second_die} for a total of #{sum}."
 
-  erb(:two_ten, { :layout => :wrapper })
+  erb(:two_ten)
 end
 
 # GET /dice/1/20 (simulate one 20-sided die)
 
-get ("/dice/1/20") do
-  first_die = rand(1..20)
+get("/dice/1/20") do
+  @die = rand(1..20)
 
-  sum = first_die
+  @outcome = "You rolled a #{@die}."
 
-  @outcome = "You rolled a #{first_die} for a total of #{sum}"
-  
-  erb(:one_ten, { :layout => :wrapper })
+  erb(:one_twenty)
 end
 
 # GET /dice/5/4 (simulate five 4-sided dice)
@@ -97,5 +106,17 @@ get ("/dice/5/4") do
 
   @outcome = "Your sum is #{sum}"
 
-  erb(:five_four, { :layout => :wrapper })
+  erb(:five_four)
+end
+
+get("/dice/100/6") do
+  @rolls = []
+
+  100.times do
+    die = rand(1..6)
+
+    @rolls.push(die)
+  end
+
+  erb(:one_hundred_six)
 end

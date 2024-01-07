@@ -1,4 +1,4 @@
-
+<!--
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,9 +13,15 @@
     <div><a href="/dice/1/20">1d20</a></div>
     <div><a href="/dice/5/4">4d5</a></div>
   </div>
-  
-  <h1>1d20</h1>
+  -->
+ <h1>1d20</h1>
 
+<% if @die == 1 %>
+  <p style="color: red"><%= @outcome %></p>
+<% elsif @die == 20 %>
+  <p style="color: green"><%= @outcome %></p>
+<% else %>
   <p><%= @outcome %></p>
-</body>
-</html>
+<% end %>
+<!--</body>
+</html>-->

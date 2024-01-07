@@ -1,0 +1,39 @@
+<!-- /views/wrapper.erb -->
+<!--this is known as the boilerplate while the other files in the view folder are view templates for that specific path-->
+
+<!--Now that we have our shared boilerplate in one place, it’s much easier to make updates to it and have those changes be reflected across all of our routes automatically.-->
+<!-- /views/wrapper.erb -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dice Roll</title>
+
+  <style>
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="navbar">
+    <div><a href="/">Home</a></div>
+    <div><a href="/dice/2/6">2d6</a></div>
+    <div><a href="/dice/2/10">2d10</a></div>
+    <div><a href="/dice/1/20">1d20</a></div>
+    <div><a href="/dice/5/4">4d5</a></div>
+    <div><a href="/dice/100/6">100d6</a></div>
+  </div>
+
+  <%= yield %>
+
+</body>
+</html>
+
+
+<!--if we name our layout file /views/layout.erb, then we don’t have to explicitly add the :layout option to the erb call; Sinatra will use it by default if it sees a file with that special name.
+
+So, let’s rename wrapper.erb to layout.erb, and then we can delete all of the { :layout => :wrapper } arguments from the erb method calls.
+-->
